@@ -1,0 +1,107 @@
+<body>
+    <div id="root"></div>
+
+    <script type="text/javascript">
+    const rootElement = document.getElementById('root');
+    const element = document.createElement('div');
+    element.textContent = 'Hola a todos';
+    element.className = 'container';
+    rootElement.appendChild(element);
+    </script>
+
+      <script src="https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.development.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-
+    dom.development.js">
+   </script>
+   <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.14.1/babel.js">
+   </script>
+
+    <script type="text/babel">
+
+function logRandom() {
+    console.log(Math.random());
+}
+
+//2.-Componente simple; sin propiedadades ni estado
+
+function Button() { 
+    return <button onClick={logRandom}>Haz clic!</button>
+}
+
+//3.-Componente simple; sin propiedadades,con estado y manejo de eventos
+
+function Button() {
+    const [conteo, setConteo] = React.useState(0);
+    return <button onClick={() => setConteo(conteo + 1)}>{conteo}</button>;
+}
+
+  //4.-Declare una variable para una función que maneje el evento, en lugar de la
+    //    función anónima.
+function Button() {
+    const [conteo, setConteo] = React.useState(0);
+
+    const handleClick = () => setConteo(conteo + 1);
+    
+    return <button onClick={handleClick}>{conteo}</button>;
+}
+
+function Button(props) {
+    const handleClick = () => props.onClickFunction(props.incrementsBy);
+    return <button onClick={handleClick}>+{props.incrementsBy}</button>;
+}
+
+function Display(props) {
+    return <div>{props.message}</div>;
+}
+
+function App() {
+    const [conteo, setConteo] = React.useState(1);
+    const IncrementarConteo = (incrementValue) => setConteo(conteo + incrementValue);
+    return (
+        <div>
+            <Button incrementsBy={1} onClickFunction={IncrementarConteo} />
+            <Button incrementsBy={2} onClickFunction={IncrementarConteo} />
+            <Button incrementsBy={5} onClickFunction={IncrementarConteo} />
+            <Button incrementsBy={10} onClickFunction={IncrementarConteo} />
+            <Button incrementsBy={100} onClickFunction={IncrementarConteo} />
+            <Display message={conteo} />
+            </div>
+            );
+        }
+
+        ReactDOM.render(
+            <App />,
+            document.getElementById("root")
+            );
+
+ReactDOM.render(
+    [<React.Fragment>
+        <Button />
+        <Display
+        message="A este componente se le envía un argumento vía un atributo. Lo recibe un parámetro." />
+        </React.Fragment>,
+    document.getElementById('root')
+);
+
+ReactDOM.render(
+    <Button />,
+    document.getElementById('root')
+    );
+
+    function Welcome() {
+        return <div>Bienvenidos a React!</div>;
+        }
+
+        ReactDOM.render(
+            <Welcome />,
+            document.getElementById('root')
+            );
+
+const rootElement = document.getElementById('root');
+const element = <div className="container">Hola a todos. Bienvenidos a React. Estamos 
+   usando JSX</div>
+   ReactDOM.render(element, rootElement);
+</script></body>
+    </script>
+</body>
